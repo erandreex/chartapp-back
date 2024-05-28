@@ -17,10 +17,18 @@ public class ModeloGraficaConfig {
     private float y_sugg_min;
     private String y_begintAtZero;
     private String y_tick_limit;
+    private String y_grid_display;
+    private String y_grid_color;
+    private String y_grid_offset;
+    private String y_grid_drawticks;
     private int y_fontSize;
     private String x_color;
     private int x_fontSize;
     private String x_source;
+    private String x_grid_display;
+    private String x_grid_color;
+    private String x_grid_offset;
+    private String x_grid_drawticks;
     private String stacked;
     private String background_tipo;
     private String background_color;
@@ -280,6 +288,70 @@ public class ModeloGraficaConfig {
 
     public void setLegend_boxSize(int legend_boxSize) {
         this.legend_boxSize = legend_boxSize;
+    }
+
+    public String getY_grid_display() {
+        return y_grid_display;
+    }
+
+    public void setY_grid_display(String y_grid_display) {
+        this.y_grid_display = y_grid_display;
+    }
+
+    public String getY_grid_color() {
+        return y_grid_color;
+    }
+
+    public void setY_grid_color(String y_grid_color) {
+        this.y_grid_color = y_grid_color;
+    }
+
+    public String getY_grid_offset() {
+        return y_grid_offset;
+    }
+
+    public void setY_grid_offset(String y_grid_offset) {
+        this.y_grid_offset = y_grid_offset;
+    }
+
+    public String getY_grid_drawticks() {
+        return y_grid_drawticks;
+    }
+
+    public void setY_grid_drawticks(String y_grid_drawticks) {
+        this.y_grid_drawticks = y_grid_drawticks;
+    }
+
+    public String getX_grid_display() {
+        return x_grid_display;
+    }
+
+    public void setX_grid_display(String x_grid_display) {
+        this.x_grid_display = x_grid_display;
+    }
+
+    public String getX_grid_color() {
+        return x_grid_color;
+    }
+
+    public void setX_grid_color(String x_grid_color) {
+        this.x_grid_color = x_grid_color;
+    }
+
+    public String getX_grid_offset() {
+        return x_grid_offset;
+    }
+
+    public void setX_grid_offset(String x_grid_offset) {
+        this.x_grid_offset = x_grid_offset;
+    }
+
+    public String getX_grid_drawticks() {
+        return x_grid_drawticks;
+    }
+
+    public void setX_grid_drawticks(String x_grid_drawticks) {
+        this.x_grid_drawticks = x_grid_drawticks;
     }
 
 }

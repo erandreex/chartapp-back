@@ -14,10 +14,11 @@ public class ModeloGraficaDatasetConfig {
     private String fondo_color;
     private String borde_color;
     private String borde_tamano;
-    private String punto_color_fondo;
-    private String punto_color_hover;
-    private String punto_color_borde;
-    private String punto_tamano;
+    private int point_radius;
+    private int point_border_width;
+    private int point_hover_radius;
+    private int point_hover_border_width;
+    private String point_hover_background_color;
     private int stack;
     private String fill;
 
@@ -117,36 +118,44 @@ public class ModeloGraficaDatasetConfig {
         this.borde_tamano = borde_tamano;
     }
 
-    public String getPunto_color_fondo() {
-        return punto_color_fondo;
+    public int getPoint_radius() {
+        return point_radius;
     }
 
-    public void setPunto_color_fondo(String punto_color_fondo) {
-        this.punto_color_fondo = punto_color_fondo;
+    public void setPoint_radius(int point_radius) {
+        this.point_radius = point_radius;
     }
 
-    public String getPunto_color_hover() {
-        return punto_color_hover;
+    public int getPoint_border_width() {
+        return point_border_width;
     }
 
-    public void setPunto_color_hover(String punto_color_hover) {
-        this.punto_color_hover = punto_color_hover;
+    public void setPoint_border_width(int point_border_width) {
+        this.point_border_width = point_border_width;
     }
 
-    public String getPunto_color_borde() {
-        return punto_color_borde;
+    public int getPoint_hover_radius() {
+        return point_hover_radius;
     }
 
-    public void setPunto_color_borde(String punto_color_borde) {
-        this.punto_color_borde = punto_color_borde;
+    public void setPoint_hover_radius(int point_hover_radius) {
+        this.point_hover_radius = point_hover_radius;
     }
 
-    public String getPunto_tamano() {
-        return punto_tamano;
+    public int getPoint_hover_border_width() {
+        return point_hover_border_width;
     }
 
-    public void setPunto_tamano(String punto_tamano) {
-        this.punto_tamano = punto_tamano;
+    public void setPoint_hover_border_width(int point_hover_border_width) {
+        this.point_hover_border_width = point_hover_border_width;
+    }
+
+    public String getPoint_hover_background_color() {
+        return point_hover_background_color;
+    }
+
+    public void setPoint_hover_background_color(String point_hover_background_color) {
+        this.point_hover_background_color = point_hover_background_color;
     }
 
     public int getStack() {

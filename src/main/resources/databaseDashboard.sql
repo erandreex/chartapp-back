@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Versión del servidor:         10.6.10-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             12.1.0.6537
+-- HeidiSQL Versión:             12.6.0.6765
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -34,20 +34,19 @@ CREATE TABLE IF NOT EXISTS `admin_dashboards` (
   `ad_tamano_small` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla admin_dashboards.admin_dashboards: ~11 rows (aproximadamente)
+-- Volcando datos para la tabla admin_dashboards.admin_dashboards: ~10 rows (aproximadamente)
 DELETE FROM `admin_dashboards`;
 INSERT INTO `admin_dashboards` (`ad_id`, `ad_nombre`, `ad_tipo`, `ad_componente_id`, `ad_orden`, `ad_tamano_xlarge`, `ad_tamano_large`, `ad_tamano_medium`, `ad_tamano_small`) VALUES
-	('1', 'prueba', 'grafica', '1', 1, '2x6', '1x4', '1x4', '1x12'),
-	('3', 'prueba', 'grafica', '3', 3, '1x3', '1x4', '1x4', '1x12'),
-	('2', 'prueba', 'grafica', '2', 2, '1x3', '1x4', '1x4', '1x12'),
-	('4', 'prueba', 'grafica', '4', 4, '1x3', '1x4', '1x6', '1x12'),
-	('6', 'prueba', 'grafica', '6', 6, '1x3', '1x4', '1x4', '1x12'),
-	('5', 'prueba', 'grafica', '5', 5, '1x3', '2x8', '1x6', '1x12'),
-	('7', 'prueba', 'grafica', '7', 7, '1x3', '1x4', '1x4', '1x12'),
-	('11', 'prueba', 'grafica', '11', 11, '1x12', '1x4', '1x12', '1x12'),
-	('8', 'prueba', 'grafica', '8', 8, '2x6', '1x4', '1x4', '1x12'),
-	('9', 'prueba', 'grafica', '9', 9, '1x3', '1x4', '1x6', '1x12'),
-	('10', 'prueba', 'grafica', '10', 10, '1x3', '1x4', '1x6', '1x12');
+	('1', 'cpu', 'chart-line-bar', '1', 1, '2x6', '1x4', '1x4', '1x12'),
+	('3', 'cpu', 'chart-line-bar', '3', 3, '1x3', '1x4', '1x4', '1x12'),
+	('2', 'cpu', 'chart-line-bar', '2', 2, '1x3', '1x4', '1x4', '1x12'),
+	('4', 'cpu', 'chart-line-bar', '4', 4, '1x3', '1x4', '1x6', '1x12'),
+	('6', 'cpu', 'chart-line-bar', '6', 6, '1x3', '1x4', '1x4', '1x12'),
+	('5', 'cpu', 'chart-line-bar', '5', 5, '1x3', '2x8', '1x6', '1x12'),
+	('7', 'cpu', 'chart-line-bar', '7', 7, '1x3', '1x4', '1x4', '1x12'),
+	('8', 'cpu', 'chart-line-bar', '8', 8, '2x6', '1x4', '1x4', '1x12'),
+	('9', 'cpu', 'chart-line-bar', '9', 9, '1x3', '1x4', '1x6', '1x12'),
+	('10', 'cpu', 'chart-line-bar', '10', 10, '1x3', '1x4', '1x6', '1x12');
 
 -- Volcando estructura para tabla admin_dashboards.admin_dashboards_parametros
 DROP TABLE IF EXISTS `admin_dashboards_parametros`;
@@ -69,7 +68,7 @@ INSERT INTO `admin_dashboards_parametros` (`adp_parametro`, `adp_valor`) VALUES
 -- Volcando estructura para tabla admin_dashboards.admin_graficas_config
 DROP TABLE IF EXISTS `admin_graficas_config`;
 CREATE TABLE IF NOT EXISTS `admin_graficas_config` (
-  `agc_id` varchar(50) DEFAULT NULL,
+  `agc_id` int(11) DEFAULT NULL,
   `agc_nombre` varchar(50) DEFAULT NULL,
   `agc_titulo` varchar(50) DEFAULT NULL,
   `agc_tipo_grafica` varchar(50) DEFAULT 'line',
@@ -90,37 +89,45 @@ CREATE TABLE IF NOT EXISTS `admin_graficas_config` (
   `agc_y_begintAtZero` varchar(50) DEFAULT 'true',
   `agc_y_tick_limit` int(11) DEFAULT NULL,
   `agc_y_fontSize` int(11) DEFAULT 12,
+  `agc_y_grid_display` varchar(50) DEFAULT NULL,
+  `agc_y_grid_color` varchar(50) DEFAULT NULL,
+  `agc_y_grid_offset` varchar(50) DEFAULT NULL,
+  `agc_y_grid_drawticks` varchar(50) DEFAULT NULL,
   `agc_x_color` varchar(50) DEFAULT NULL,
   `agc_x_source` varchar(50) DEFAULT '12',
   `agc_x_fontSize` int(11) DEFAULT NULL,
+  `agc_x_grid_display` varchar(50) DEFAULT NULL,
+  `agc_x_grid_color` varchar(50) DEFAULT NULL,
+  `agc_x_grid_offset` varchar(50) DEFAULT NULL,
+  `agc_x_grid_drawticks` varchar(50) DEFAULT NULL,
   `agc_legend_boxSize` int(11) DEFAULT 30,
   `agc_legend_fontSize` int(11) DEFAULT 12,
   `agc_legend_color` varchar(50) DEFAULT '#FFFFFF',
   `agc_title_fontSize` int(11) DEFAULT 12,
   `agc_title_color` varchar(50) DEFAULT '#FFFFFF',
   `agc_tooltip_fontSize` int(11) DEFAULT 12,
-  `agc_tooltip_color` varchar(50) DEFAULT '#FFFFFF'
+  `agc_tooltip_color` varchar(50) DEFAULT '#FFFFFF',
+  UNIQUE KEY `agc_id` (`agc_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla admin_dashboards.admin_graficas_config: ~11 rows (aproximadamente)
+-- Volcando datos para la tabla admin_dashboards.admin_graficas_config: ~10 rows (aproximadamente)
 DELETE FROM `admin_graficas_config`;
-INSERT INTO `admin_graficas_config` (`agc_id`, `agc_nombre`, `agc_titulo`, `agc_tipo_grafica`, `agc_tipo_escala`, `agc_cant_registros`, `agc_intervalo_operacion`, `agc_intervalo_tiempo`, `agc_intervalo_valor`, `agc_stacked`, `agc_observable`, `agc_background_tipo`, `agc_background_color`, `agc_layout_padding`, `agc_y_label`, `agc_y_color`, `agc_y_sugg_max`, `agc_y_sugg_min`, `agc_y_begintAtZero`, `agc_y_tick_limit`, `agc_y_fontSize`, `agc_x_color`, `agc_x_source`, `agc_x_fontSize`, `agc_legend_boxSize`, `agc_legend_fontSize`, `agc_legend_color`, `agc_title_fontSize`, `agc_title_color`, `agc_tooltip_fontSize`, `agc_tooltip_color`) VALUES
-	('3', 'Chart CPU per Minutes', 'Chart CPU per Minutes', 'line', 'time', 15, 'unit', 'minute', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('2', 'Chart CPU per 5 Minutes', 'Chart CPU per 5 Minutes', 'line', 'time', 12, 'unit', 'minute', '5', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('1', 'Chart CPU per 1 Minute', 'Chart CPU per 1 Minute', 'line', 'time', 30, 'unit', 'minute', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 4, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('4', 'Average CPU per hour', 'Average CPU per hour', 'bar', 'time', 12, 'average', 'hour', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('5', 'Total CPU per Hour', 'Total CPU per Hour', 'line', 'time', 10, 'total', 'hour', '1', 'true', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 5, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('7', 'CPU Week count', 'CPU Week count', 'line', 'time', 5, 'count', 'week', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('6', 'Day Average CPU', 'Day Average CPU', 'bar', 'time', 10, 'average', 'day', '1', 'true', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('8', 'Chart CPU Minutes 3', 'Chart CPU Minutes 3', 'line', 'time', 30, 'unit', 'minute', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('9', 'Average Hour CPU', 'Average Hour CPU', 'line', 'time', 12, 'average', 'hour', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('10', 'Average Year CPU', 'Average Year CPU', 'bar', 'time', 12, 'average', 'year', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
-	('11', 'Average Month CPU', 'Average Month CPU', 'line', 'time', 12, 'average', 'month', '1', 'false', 60000, 'transparent', '#292E38', 15, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, '#FFFFFF', 'data', 10, 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF');
+INSERT INTO `admin_graficas_config` (`agc_id`, `agc_nombre`, `agc_titulo`, `agc_tipo_grafica`, `agc_tipo_escala`, `agc_cant_registros`, `agc_intervalo_operacion`, `agc_intervalo_tiempo`, `agc_intervalo_valor`, `agc_stacked`, `agc_observable`, `agc_background_tipo`, `agc_background_color`, `agc_layout_padding`, `agc_y_label`, `agc_y_color`, `agc_y_sugg_max`, `agc_y_sugg_min`, `agc_y_begintAtZero`, `agc_y_tick_limit`, `agc_y_fontSize`, `agc_y_grid_display`, `agc_y_grid_color`, `agc_y_grid_offset`, `agc_y_grid_drawticks`, `agc_x_color`, `agc_x_source`, `agc_x_fontSize`, `agc_x_grid_display`, `agc_x_grid_color`, `agc_x_grid_offset`, `agc_x_grid_drawticks`, `agc_legend_boxSize`, `agc_legend_fontSize`, `agc_legend_color`, `agc_title_fontSize`, `agc_title_color`, `agc_tooltip_fontSize`, `agc_tooltip_color`) VALUES
+	(3, 'Chart CPU per Minutes', 'CPU per Minutes', 'line', 'time', 15, 'unit', 'minute', '1', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(2, 'Chart CPU per 5 Minutes', 'Chart CPU per 5 Minutes', 'line', 'time', 12, 'unit', 'minute', '5', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(1, 'Chart CPU per 1 Minute', 'CPU Usage by minutes', 'line', 'time', 15, 'unit', 'minute', '1', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 8, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(4, 'Average CPU per hour', 'Average CPU per hour', 'bar', 'time', 12, 'average', 'hour', '1', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(5, 'Total CPU per Hour', 'Total CPU per Hour', 'line', 'time', 10, 'total', 'hour', '1', 'true', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 5, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(7, 'CPU Week count', 'CPU Week count', 'line', 'time', 5, 'count', 'week', '1', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(6, 'Day Average CPU', 'Day Average CPU', 'bar', 'time', 10, 'average', 'day', '1', 'true', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(8, 'Chart CPU Minutes 3', 'Chart CPU Minutes 3', 'line', 'time', 12, 'unit', 'minute', '1', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(9, 'Average Hour CPU', 'Average Hour CPU', 'line', 'time', 12, 'average', 'hour', '1', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF'),
+	(10, 'Average Year CPU', 'Average Year CPU', 'bar', 'time', 12, 'average', 'year', '1', 'false', 60000, 'transparent', '#292E38', 10, 'Total CPU', '#FFFFFF', 100, 0, 'true', 11, 10, 'true', '#0000001A', 'false', 'true', '#FFFFFF', 'data', 10, 'true', '#0000001A', 'false', 'true', 30, 10, '#FFFFFF', 10, '#FFFFFF', 10, '#FFFFFF');
 
 -- Volcando estructura para tabla admin_dashboards.admin_graficas_datasets
 DROP TABLE IF EXISTS `admin_graficas_datasets`;
 CREATE TABLE IF NOT EXISTS `admin_graficas_datasets` (
-  `agd_grafica_id` varchar(50) DEFAULT NULL,
+  `agd_grafica_id` int(11) DEFAULT NULL,
   `agd_dataset_id` varchar(50) DEFAULT NULL,
   `agd_dataset_posicion` int(11) DEFAULT NULL,
   `agd_proc_nombre` varchar(10) DEFAULT NULL,
@@ -132,38 +139,40 @@ CREATE TABLE IF NOT EXISTS `admin_graficas_datasets` (
   `agd_fondo_color` varchar(10) DEFAULT NULL,
   `agd_borde_color` varchar(10) DEFAULT NULL,
   `agd_borde_tamano` varchar(2) DEFAULT '3',
-  `agd_punto_color_fondo` varchar(10) DEFAULT '#000000',
-  `agd_punto_color_hover` varchar(10) DEFAULT '#000000',
-  `agd_punto_color_borde` varchar(10) DEFAULT '#000000',
-  `agd_punto_tamano` varchar(50) DEFAULT '2',
+  `agd_point_radius` varchar(50) DEFAULT '2',
+  `agd_point_border_width` varchar(50) DEFAULT '1',
+  `agd_point_hover_radius` varchar(10) DEFAULT '3',
+  `agd_point_hover_border_width` varchar(10) DEFAULT '1',
+  `agd_point_hover_background_color` varchar(10) DEFAULT '#000000',
   `agd_stack` int(11) DEFAULT 0,
   `agd_fill` varchar(10) DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Volcando datos para la tabla admin_dashboards.admin_graficas_datasets: ~21 rows (aproximadamente)
 DELETE FROM `admin_graficas_datasets`;
-INSERT INTO `admin_graficas_datasets` (`agd_grafica_id`, `agd_dataset_id`, `agd_dataset_posicion`, `agd_proc_nombre`, `agd_proc_tipo`, `agd_proc_operacion`, `agd_rutina`, `agd_dataset_label`, `agd_tipo`, `agd_fondo_color`, `agd_borde_color`, `agd_borde_tamano`, `agd_punto_color_fondo`, `agd_punto_color_hover`, `agd_punto_color_borde`, `agd_punto_tamano`, `agd_stack`, `agd_fill`) VALUES
-	('1', '1', 1, 'CPU', 'Q', 'QPP', 'servidor1', 'server 1', 'line', '#ff4ac9', '#ff7dd8', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('1', '2', 2, 'CPU', 'Q', 'QPP', 'servidor2', 'server 2', 'line', '#FFFFFF', '#ffc300', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('1', '3', 3, 'CPU', 'Q', 'QPP', 'servidor3', 'server 3', 'line', '#1e6091', '#168aad', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('3', '7', 1, 'CPU', 'Q', 'QPP', 'servidor7', 'server 7', 'line', '#fa188a', '#ffa5a1', '2', '#000000', '#000000', '#000000', '1', 1, 'true'),
-	('2', '5', 2, 'CPU', 'Q', 'QPP', 'servidor5', 'server 5', 'line', '#a2d729', '#a2d729', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('2', '6', 3, 'CPU', 'Q', 'QPP', 'servidor6', 'server 6', 'line', '#fa824c', '#fa824c', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('2', '4', 1, 'CPU', 'Q', 'QPP', 'servidor4', 'server 4', 'line', '#b3b300', '#7d7d00', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('3', '8', 2, 'CPU', 'Q', 'QPP', 'servidor8', 'server 8', 'line', '#2dffac', '#2dffac', '2', '#000000', '#000000', '#000000', '1', 1, 'true'),
-	('3', '9', 3, 'CPU', 'Q', 'QPP', 'servidor9', 'server 9', 'line', '#1aa1b4', '#1aa1b4', '2', '#000000', '#000000', '#000000', '1', 1, 'true'),
-	('4', '10', 1, 'CPU', 'Q', 'QPP', 'servidor10', 'server 10', 'bar', '#1aa1b4', '#1aa1b4', '2', '#000000', '#000000', '#000000', '1', 0, 'true'),
-	('5', '11', 1, 'CPU', 'Q', 'QPP', 'servidor6', 'server 6', 'line', '#fa824c', '#fa824c', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('6', '13', 2, 'CPU', 'Q', 'QPP', 'servidor10', 'server 10', 'bar', '#1e6091', '#1e6091', '0', '#000000', '#000000', '#000000', '1', 1, 'false'),
-	('5', '12', 2, 'CPU', 'Q', 'QPP', 'servidor5', 'server 5', 'bar', '#00bfed', '#0072c7', '2', '#000000', '#000000', '#000000', '1', 1, 'false'),
-	('8', '16', 1, 'CPU', 'Q', 'QPP', 'servidor12', 'server 12', 'line', '#a2d729', '#a2d729', '3', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('6', '14', 1, 'CPU', 'Q', 'QPP', 'servidor9', 'server 9', 'bar', '#fa188a', '#fa188a', '0', '#000000', '#000000', '#000000', '1', 1, 'false'),
-	('7', '15', 1, 'CPU', 'Q', 'QPP', 'servidor12', 'server 12', 'bar', '#a2d729', '#a2d729', '2', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('8', '17', 2, 'CPU', 'Q', 'QPP', 'servidor6', 'server 6', 'line', '#ffea00', '#ffea00', '3', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('9', '18', 1, 'CPU', 'Q', 'QPP', 'servidor3', 'server 3', 'line', '#fa824c', '#fa824c', '3', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('10', '19', 1, 'CPU', 'Q', 'QPP', 'servidor1', 'server 1', 'line', '#fa188a', '#fa188a', '3', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('10', '20', 2, 'CPU', 'Q', 'QPP', 'servidor2', 'server 2', 'line', '#fa824c', '#fa824c', '3', '#000000', '#000000', '#000000', '1', 0, 'false'),
-	('11', '21', 1, 'CPU', 'Q', 'QPP', 'servidor3', 'server 3', 'line', '#a2d729', '#a2d729', '3', '#000000', '#000000', '#000000', '1', 0, 'false');
+INSERT INTO `admin_graficas_datasets` (`agd_grafica_id`, `agd_dataset_id`, `agd_dataset_posicion`, `agd_proc_nombre`, `agd_proc_tipo`, `agd_proc_operacion`, `agd_rutina`, `agd_dataset_label`, `agd_tipo`, `agd_fondo_color`, `agd_borde_color`, `agd_borde_tamano`, `agd_point_radius`, `agd_point_border_width`, `agd_point_hover_radius`, `agd_point_hover_border_width`, `agd_point_hover_background_color`, `agd_stack`, `agd_fill`) VALUES
+	(1, '1', 1, 'CPU', 'Q', 'QPP', 'servidor1', 'server 1', 'line', '#fca31133', '#fca311', '2', '2', '1', '4', '2', '#000000', 0, 'true'),
+	(1, '2', 2, 'CPU', 'Q', 'QPP', 'servidor2', 'server 2', 'line', '#FFFFFF33', '#FFFFFF', '2', '2', '1', '4', '2', '#000000', 0, 'true'),
+	(1, '3', 3, 'CPU', 'Q', 'QPP', 'servidor3', 'server 3', 'line', '#168aad33', '#168aad', '2', '2', '1', '4', '2', '#000000', 0, 'true'),
+	(3, '7', 1, 'CPU', 'Q', 'QPP', 'servidor7', 'server 7', 'line', '#fa188a33', '#ffa5a1', '2', '2', '1', '4', '2', '#000000', 1, 'true'),
+	(2, '5', 2, 'CPU', 'Q', 'QPP', 'servidor5', 'server 5', 'line', '#a2d729', '#a2d729', '2', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(2, '6', 3, 'CPU', 'Q', 'QPP', 'servidor6', 'server 6', 'line', '#fa824c', '#fa824c', '2', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(2, '4', 1, 'CPU', 'Q', 'QPP', 'servidor4', 'server 4', 'line', '#7d7d00', '#7d7d00', '2', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(3, '8', 2, 'CPU', 'Q', 'QPP', 'servidor8', 'server 8', 'line', '#2dffac33', '#2dffac', '2', '2', '1', '4', '2', '#000000', 1, 'true'),
+	(3, '9', 3, 'CPU', 'Q', 'QPP', 'servidor9', 'server 9', 'line', '#1aa1b433', '#1aa1b4', '2', '2', '1', '4', '2', '#000000', 1, 'true'),
+	(4, '10', 2, 'CPU', 'Q', 'QPP', 'servidor11', 'server 11', 'bar', '#8338ec', '#8338ec', '2', '2', '1', '4', '2', '#000000', 1, 'true'),
+	(5, '11', 1, 'CPU', 'Q', 'QPP', 'servidor6', 'server 6', 'line', '#fa824c', '#fa824c', '2', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(6, '13', 2, 'CPU', 'Q', 'QPP', 'servidor10', 'server 10', 'bar', '#1e6091', '#1e6091', '0', '2', '1', '4', '2', '#000000', 1, 'false'),
+	(5, '12', 2, 'CPU', 'Q', 'QPP', 'servidor5', 'server 5', 'bar', '#00bfed', '#0072c7', '2', '2', '1', '4', '2', '#000000', 1, 'false'),
+	(8, '16', 1, 'CPU', 'Q', 'QPP', 'servidor12', 'server 12', 'line', '#a2d729', '#a2d729', '3', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(6, '14', 1, 'CPU', 'Q', 'QPP', 'servidor9', 'server 9', 'bar', '#fa188a', '#fa188a', '0', '2', '1', '4', '2', '#000000', 1, 'false'),
+	(7, '15', 1, 'CPU', 'Q', 'QPP', 'servidor12', 'server 12', 'bar', '#a2d729', '#a2d729', '2', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(8, '17', 2, 'CPU', 'Q', 'QPP', 'servidor6', 'server 6', 'line', '#ffea00', '#ffea00', '3', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(9, '18', 1, 'CPU', 'Q', 'QPP', 'servidor3', 'server 3', 'line', '#fa824c33', '#fa824c', '3', '2', '1', '4', '2', '#000000', 0, 'true'),
+	(10, '19', 1, 'CPU', 'Q', 'QPP', 'servidor1', 'server 1', 'line', '#fa188a', '#fa188a', '3', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(10, '20', 2, 'CPU', 'Q', 'QPP', 'servidor2', 'server 2', 'line', '#fa824c', '#fa824c', '3', '2', '1', '4', '2', '#000000', 0, 'false'),
+	(1, '21', 4, 'CPU', 'Q', 'QPP', 'servidor4', 'server 4', 'line', '#f7258533', '#f72585', '2', '2', '1', '4', '2', '#000000', 0, 'true'),
+	(4, '10', 1, 'CPU', 'Q', 'QPP', 'servidor10', 'server 10', 'bar', '#1aa1b4', '#1aa1b4', '2', '2', '1', '4', '2', '#000000', 0, 'true');
 
 -- Volcando estructura para tabla admin_dashboards.admin_graficas_procedimientos
 DROP TABLE IF EXISTS `admin_graficas_procedimientos`;
@@ -254,10 +263,11 @@ BEGIN
 				agd_fondo_color,
 				agd_borde_color,
 				agd_borde_tamano,
-				agd_punto_color_fondo,
-				agd_punto_color_hover,
-				agd_punto_color_borde,
-				agd_punto_tamano,
+				agd_point_radius,
+				agd_point_border_width,
+				agd_point_hover_radius,
+				agd_point_hover_border_width,
+				agd_point_hover_background_color,
 				agd_stack,
 				agd_fill
 			FROM admin_dashboards.admin_graficas_datasets
@@ -277,6 +287,11 @@ BEGIN
 				agc_intervalo_operacion,
 				agc_intervalo_tiempo,
 				agc_intervalo_valor,
+				agc_stacked,
+				agc_observable,
+				agc_background_tipo,
+				agc_background_color,
+				agc_layout_padding,
 				agc_y_label,
 				agc_y_color,
 				agc_y_sugg_max,
@@ -284,21 +299,25 @@ BEGIN
 				agc_y_begintAtZero,
 				agc_y_tick_limit,
 				agc_y_fontSize,
+				agc_y_grid_display,
+				agc_y_grid_color,
+				agc_y_grid_offset,
+				agc_y_grid_drawticks,
 				agc_x_color,
 				agc_x_source,
 				agc_x_fontSize,
-				agc_stacked,
-				agc_background_tipo,
-				agc_background_color,
-				agc_observable,
+				agc_x_grid_display,
+				agc_x_grid_color,
+				agc_x_grid_offset,
+				agc_x_grid_drawticks,
 				agc_legend_boxSize,
 				agc_legend_fontSize,
 				agc_legend_color,
 				agc_title_fontSize,
 				agc_title_color,
 				agc_tooltip_fontSize,
-				agc_tooltip_color,
-				agc_layout_padding
+				agc_tooltip_color
+				
 			FROM admin_dashboards.admin_graficas_config
 			WHERE agc_id = i_variable_1;
 			

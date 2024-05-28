@@ -130,6 +130,12 @@ public class ServicioDashboard {
                 resultado.setIntervalo_operacion(rs.getString("agc_intervalo_operacion"));
                 resultado.setIntervalo_tiempo(rs.getString("agc_intervalo_tiempo"));
                 resultado.setIntervalo_valor(rs.getString("agc_intervalo_valor"));
+                resultado.setStacked(rs.getString("agc_stacked"));
+                resultado.setObservable(rs.getInt("agc_observable"));
+                resultado.setBackground_tipo(rs.getString("agc_background_tipo"));
+                resultado.setBackground_color(rs.getString("agc_background_color"));
+                resultado.setLayout_padding(rs.getInt("agc_layout_padding"));
+
                 resultado.setY_label(rs.getString("agc_y_label"));
                 resultado.setY_color(rs.getString("agc_y_color"));
                 resultado.setY_sugg_max(rs.getFloat("agc_y_sugg_max"));
@@ -137,13 +143,19 @@ public class ServicioDashboard {
                 resultado.setY_begintAtZero(rs.getString("agc_y_begintAtZero"));
                 resultado.setY_tick_limit(rs.getString("agc_y_tick_limit"));
                 resultado.setY_fontSize(rs.getInt("agc_y_fontSize"));
+                resultado.setY_grid_display(rs.getString("agc_y_grid_display"));
+                resultado.setY_grid_color(rs.getString("agc_y_grid_color"));
+                resultado.setY_grid_offset(rs.getString("agc_y_grid_offset"));
+                resultado.setY_grid_drawticks(rs.getString("agc_y_grid_drawticks"));
+
                 resultado.setX_color(rs.getString("agc_x_color"));
                 resultado.setX_source(rs.getString("agc_x_source"));
                 resultado.setX_fontSize(rs.getInt("agc_x_fontSize"));
-                resultado.setStacked(rs.getString("agc_stacked"));
-                resultado.setBackground_tipo(rs.getString("agc_background_tipo"));
-                resultado.setBackground_color(rs.getString("agc_background_color"));
-                resultado.setObservable(rs.getInt("agc_observable"));
+                resultado.setX_grid_display(rs.getString("agc_x_grid_display"));
+                resultado.setX_grid_color(rs.getString("agc_x_grid_color"));
+                resultado.setX_grid_offset(rs.getString("agc_x_grid_offset"));
+                resultado.setX_grid_drawticks(rs.getString("agc_x_grid_drawticks"));
+
                 resultado.setLegend_boxSize(rs.getInt("agc_legend_boxSize"));
                 resultado.setLegend_fontSize(rs.getInt("agc_legend_fontSize"));
                 resultado.setLegend_color(rs.getString("agc_legend_color"));
@@ -151,7 +163,6 @@ public class ServicioDashboard {
                 resultado.setTitle_color(rs.getString("agc_title_color"));
                 resultado.setTooltip_fontSize(rs.getInt("agc_tooltip_fontSize"));
                 resultado.setTooltip_color(rs.getString("agc_tooltip_color"));
-                resultado.setLayout_padding(rs.getInt("agc_layout_padding"));
             }
 
         } catch (SQLException e) {
@@ -223,10 +234,11 @@ public class ServicioDashboard {
                 resultado.setFondo_color(rs.getString("agd_fondo_color"));
                 resultado.setBorde_color(rs.getString("agd_borde_color"));
                 resultado.setBorde_tamano(rs.getString("agd_borde_tamano"));
-                resultado.setPunto_color_fondo(rs.getString("agd_punto_color_fondo"));
-                resultado.setPunto_color_hover(rs.getString("agd_punto_color_hover"));
-                resultado.setPunto_color_borde(rs.getString("agd_punto_color_borde"));
-                resultado.setPunto_tamano(rs.getString("agd_punto_tamano"));
+                resultado.setPoint_radius(rs.getInt("agd_point_radius"));
+                resultado.setPoint_border_width(rs.getInt("agd_point_border_width"));
+                resultado.setPoint_hover_radius(rs.getInt("agd_point_hover_radius"));
+                resultado.setPoint_hover_border_width(rs.getInt("agd_point_hover_border_width"));
+                resultado.setPoint_hover_background_color(rs.getString("agd_point_hover_background_color"));
                 resultado.setStack(rs.getInt("agd_stack"));
                 resultado.setFill(rs.getString("agd_fill"));
                 lista.add(resultado);
